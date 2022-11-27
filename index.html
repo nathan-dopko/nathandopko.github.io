@@ -1,52 +1,51 @@
 <html>
+  <head>
+    <title>Guess The Number</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
 
-<body bgcolor=fruitcrisp>
-guess the number between 1 and 99
-
-<input id="myGuess">
-<button onclick="guess(myGuess.value)">Guess</button>
-
-<button onclick="newgame()">New Game</button>
-
-</body>
+  <body>
+    <div class="header">
+      <h1>Guess the number between 1 and 100!</h1>
+      <h3>How many guesses will it take you?</h3>
+    </div>
+    <div class="body">
+      <input id="myGuess" />
+      <div class="buttonWrapper">
+        <button onclick="guess(myGuess.value)">Guess</button>
+        <button class="newGame" onclick="newgame()">New Game</button>
+      </div>
+    </div>
+  </body>
 </html>
 
 <script>
-var limit = 15
+  var limit = 15;
 
-var numberofGuesses = 0
+  var numberofGuesses = 0;
 
-var myNumber = Math.floor((Math.random() * 99) + 1);
+  var numberofGuessesleft = limit - numberofGuesses;
 
-function guess(myguess) {
+  var myNumber = Math.floor(Math.random() * 100 + 1);
 
-        numberofGuesses = numberofGuesses + 1;
+  function guess(myguess) {
+    numberofGuesses = numberofGuesses + 1;
 
-        if (numberofGuesses > limit) {
-
-                alert("too many guesses thanks for playing!!");
-}  else {    
-
-        if (myguess < myNumber) {
-
-                alert("too low!");
-
-        } else if (myguess > myNumber) {
-
-                alert("too high!");
-
-        } else {
-
-                alert("Correct!");
-
-        }
-}
-
-}
-function newgame(){
-  document.getElementById("myGuess").value = "";
-  myNumber = Math.floor((Math.random() * 99) + 1);
- numberofGuesses = 0
-}
-
+    if (numberofGuesses > limit) {
+      alert('too many guesses thanks for playing!!');
+    } else {
+      if (myguess < myNumber) {
+        alert('too low! try again...');
+      } else if (myguess > myNumber) {
+        alert('too high! try again...');
+      } else {
+        alert('Correct! you got it in ' + numberofGuesses + ' guesses!');
+      }
+    }
+  }
+  function newgame() {
+    document.getElementById('myGuess').value = '';
+    myNumber = Math.floor(Math.random() * 99 + 1);
+    numberofGuesses = 0;
+  }
 </script>
