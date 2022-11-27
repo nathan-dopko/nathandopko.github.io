@@ -1,9 +1,52 @@
 <html>
- 
-<body>
-  <h1>Nathan Dopko</h1>
-  <p>Welcome to my website!</p>
-  <img src="https://content.codecademy.com/articles/github-pages-via-web-app/happy-ice-cream.gif" />
+
+<body bgcolor=fruitcrisp>
+guess the number between 1 and 99
+
+<input id="myGuess">
+<button onclick="guess(myGuess.value)">Guess</button>
+
+<button onclick="newgame()">New Game</button>
+
 </body>
- 
 </html>
+
+<script>
+var limit = 15
+
+var numberofGuesses = 0
+
+var myNumber = Math.floor((Math.random() * 99) + 1);
+
+function guess(myguess) {
+
+        numberofGuesses = numberofGuesses + 1;
+
+        if (numberofGuesses > limit) {
+
+                alert("too many guesses thanks for playing!!");
+}  else {    
+
+        if (myguess < myNumber) {
+
+                alert("too low!");
+
+        } else if (myguess > myNumber) {
+
+                alert("too high!");
+
+        } else {
+
+                alert("Correct!");
+
+        }
+}
+
+}
+function newgame(){
+  document.getElementById("myGuess").value = "";
+  myNumber = Math.floor((Math.random() * 99) + 1);
+ numberofGuesses = 0
+}
+
+</script>
